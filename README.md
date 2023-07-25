@@ -13,27 +13,7 @@
 
 # 性能
 
-Intel(R) Xeon(R) Gold 6136 CPU @ 3.00GHz   3.00 GHz
-
-add cost time:13.173848017636292s
-
-subtract cost time:8.430511683475782s
-
-multiply cost time:167.16211960807226s
-
-div cost time:278.7772124865172s
-
-mod cost time:266.27461345036033s
-
-power_mod cost time:2973.2182057661344s
-
-power_mod cost time:49.02678179423386s
-
-power_mod cost time:2750.914678764818s
-
-
-
-NVIDIA GeForce RTX 4060 Laptop GPU
+# NVIDIA GeForce RTX 4060 Laptop GPU
 
 random cost:0.933009
 
@@ -78,3 +58,24 @@ SoA encrypt_total:1.12171s
 SoA decrypt_total:143.849s
 
 SoA total_cost:144.973s
+
+
+
+
+# Intel(R) Xeon(R) Gold 6136 CPU @ 3.00GHz   3.00 GHz
+
+add cost time:13.173848017636292s
+
+subtract cost time:8.430511683475782s
+
+multiply cost time:167.16211960807226s
+
+div cost time:278.7772124865172s
+
+mod cost time:266.27461345036033s
+
+power_mod cost time:2973.2182057661344s
+
+power_mod cost time:49.02678179423386s
+
+power_mod cost time:2750.914678764818s
