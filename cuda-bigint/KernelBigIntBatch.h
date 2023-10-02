@@ -2,7 +2,6 @@
 #include"KernelBigInt.h"
 
 #define BATCH_SIZE 196608
-
 /*
 * 采用SoA的内存结构来存储显卡需要的batch数据
 * 好处是两个相邻线程读取的内存也是相邻的，GPU会自动优化读写效率

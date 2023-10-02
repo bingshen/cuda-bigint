@@ -89,6 +89,13 @@ public:
     void generate_prime(const int n);
     void single_rsa_encrypt(const int n);
     void batch_rsa_encrypt(const int n);
+    void gmp_add_test(const int n);
+    void gmp_subtract_test(const int n);
+    void gmp_mult_test(const int n);
+    void gmp_div_test(const int n);
+    void gmp_mod_test(const int n);
+    void gmp_power_mod_test(const int n);
+    void gmp_rsa_test(const int n);
 };
 
 void CaseTest::single_add(const int n)
@@ -105,7 +112,7 @@ void CaseTest::single_add(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"AoS add total_cost:"<<cost_time<<"s\n";
+    std::cout<<"row store add total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::batch_add(const int n)
@@ -122,7 +129,7 @@ void CaseTest::batch_add(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"SoA add total_cost:"<<cost_time<<"s\n";
+    std::cout<<"colum store add total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::single_subtract(const int n)
@@ -139,7 +146,7 @@ void CaseTest::single_subtract(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"AoS subtract total_cost:"<<cost_time<<"s\n";
+    std::cout<<"row store subtract total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::batch_subtract(const int n)
@@ -156,7 +163,7 @@ void CaseTest::batch_subtract(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"SoA subtract total_cost:"<<cost_time<<"s\n";
+    std::cout<<"colum store subtract total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::single_mult(const int n)
@@ -173,7 +180,7 @@ void CaseTest::single_mult(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"AoS multiply total_cost:"<<cost_time<<"s\n";
+    std::cout<<"row store multiply total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::batch_mult(const int n)
@@ -190,7 +197,7 @@ void CaseTest::batch_mult(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"SoA multiply total_cost:"<<cost_time<<"s\n";
+    std::cout<<"colum store multiply total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::single_div(const int n)
@@ -207,7 +214,7 @@ void CaseTest::single_div(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"AoS divide total_cost:"<<cost_time<<"s\n";
+    std::cout<<"row store divide total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::batch_div(const int n)
@@ -224,7 +231,7 @@ void CaseTest::batch_div(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"SoA divide total_cost:"<<cost_time<<"s\n";
+    std::cout<<"colum store divide total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::single_mod(const int n)
@@ -241,7 +248,7 @@ void CaseTest::single_mod(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"AoS mod total_cost:"<<cost_time<<"s\n";
+    std::cout<<"row store mod total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::batch_mod(const int n)
@@ -258,7 +265,7 @@ void CaseTest::batch_mod(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"SoA mod total_cost:"<<cost_time<<"s\n";
+    std::cout<<"colum store mod total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::single_power_mod(const int n)
@@ -275,7 +282,7 @@ void CaseTest::single_power_mod(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"AoS power-mod total_cost:"<<cost_time<<"s\n";
+    std::cout<<"row store power-mod total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::batch_power_mod(const int n)
@@ -292,7 +299,7 @@ void CaseTest::batch_power_mod(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"SoA power-mod total_cost:"<<cost_time<<"s\n";
+    std::cout<<"colum store power-mod total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::single_fixpower_mod(const int n)
@@ -309,7 +316,7 @@ void CaseTest::single_fixpower_mod(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"AoS power-mod total_cost:"<<cost_time<<"s\n";
+    std::cout<<"row store power-mod total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::batch_fixpower_mod(const int n)
@@ -326,7 +333,7 @@ void CaseTest::batch_fixpower_mod(const int n)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"SoA power-mod total_cost:"<<cost_time<<"s\n";
+    std::cout<<"colum store power-mod total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::generate_prime(const int n)
@@ -368,9 +375,9 @@ void CaseTest::single_rsa_encrypt(const int N)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"AoS encrypt_total:"<<encrypt_total<<"s\n";
-    std::cout<<"AoS decrypt_total:"<<decrypt_total<<"s\n";
-    std::cout<<"AoS total_cost:"<<cost_time<<"s\n";
+    std::cout<<"row store encrypt_total:"<<encrypt_total<<"s\n";
+    std::cout<<"row store decrypt_total:"<<decrypt_total<<"s\n";
+    std::cout<<"row store total_cost:"<<cost_time<<"s\n";
 }
 
 void CaseTest::batch_rsa_encrypt(const int N)
@@ -400,7 +407,185 @@ void CaseTest::batch_rsa_encrypt(const int N)
     }
     auto total_end=Clock::now();
     double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
-    std::cout<<"SoA encrypt_total:"<<encrypt_total<<"s\n";
-    std::cout<<"SoA decrypt_total:"<<decrypt_total<<"s\n";
-    std::cout<<"SoA total_cost:"<<cost_time<<"s\n";
+    std::cout<<"colum store encrypt_total:"<<encrypt_total<<"s\n";
+    std::cout<<"colum store decrypt_total:"<<decrypt_total<<"s\n";
+    std::cout<<"colum store total_cost:"<<cost_time<<"s\n";
+}
+
+void CaseTest::gmp_add_test(const int n)
+{
+    auto total_start=Clock::now();
+    gmp_randstate_t state;
+    gmp_randinit_default(state);
+    gmp_randseed_ui(state,distr(eng));
+    mpz_t p,q,r;
+    mpz_init(p);
+    mpz_init(q);
+    mpz_init(r);
+    mpz_urandomb(p,state,2048);
+    mpz_urandomb(q,state,2048);
+    for(int i=0;i<n;i++)
+    {
+        mpz_add(r,p,q);
+    }
+    auto total_end=Clock::now();
+    double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
+    std::cout<<"gmp add cost:"<<cost_time<<"s\n";
+}
+
+void CaseTest::gmp_subtract_test(const int n)
+{
+    auto total_start=Clock::now();
+    gmp_randstate_t state;
+    gmp_randinit_default(state);
+    gmp_randseed_ui(state,distr(eng));
+    mpz_t p,q,r;
+    mpz_init(p);
+    mpz_init(q);
+    mpz_init(r);
+    mpz_urandomb(p,state,2048);
+    mpz_urandomb(q,state,2048);
+    for(int i=0;i<n;i++)
+    {
+        mpz_add(r,p,q);
+    }
+    auto total_end=Clock::now();
+    double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
+    std::cout<<"gmp subtract cost:"<<cost_time<<"s\n";
+}
+
+void CaseTest::gmp_mult_test(const int n)
+{
+    auto total_start=Clock::now();
+    gmp_randstate_t state;
+    gmp_randinit_default(state);
+    gmp_randseed_ui(state,distr(eng));
+    mpz_t p,q,r;
+    mpz_init(p);
+    mpz_init(q);
+    mpz_init(r);
+    mpz_urandomb(p,state,2048);
+    mpz_urandomb(q,state,2048);
+    for(int i=0;i<n;i++)
+    {
+        mpz_mul(r,p,q);
+    }
+    auto total_end=Clock::now();
+    double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
+    std::cout<<"gmp mult cost:"<<cost_time<<"s\n";
+}
+
+void CaseTest::gmp_div_test(const int n)
+{
+    auto total_start=Clock::now();
+    gmp_randstate_t state;
+    gmp_randinit_default(state);
+    gmp_randseed_ui(state,distr(eng));
+    mpz_t p,q,r;
+    mpz_init(p);
+    mpz_init(q);
+    mpz_init(r);
+    mpz_urandomb(p,state,2048);
+    mpz_urandomb(q,state,512);
+    for(int i=0;i<n;i++)
+    {
+        mpz_div(r,p,q);
+    }
+    auto total_end=Clock::now();
+    double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
+    std::cout<<"gmp div cost:"<<cost_time<<"s\n";
+}
+
+void CaseTest::gmp_mod_test(const int n)
+{
+    auto total_start=Clock::now();
+    gmp_randstate_t state;
+    gmp_randinit_default(state);
+    gmp_randseed_ui(state,distr(eng));
+    mpz_t p,q,r;
+    mpz_init(p);
+    mpz_init(q);
+    mpz_init(r);
+    mpz_urandomb(p,state,2048);
+    mpz_urandomb(q,state,512);
+    for(int i=0;i<n;i++)
+    {
+        mpz_mod(r,p,q);
+    }
+    auto total_end=Clock::now();
+    double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
+    std::cout<<"gmp mod cost:"<<cost_time<<"s\n";
+}
+
+void CaseTest::gmp_power_mod_test(const int n)
+{
+    auto total_start=Clock::now();
+    gmp_randstate_t state;
+    gmp_randinit_default(state);
+    gmp_randseed_ui(state,distr(eng));
+    mpz_t a,p,m,r;
+    mpz_init(a);
+    mpz_init(p);
+    mpz_init(m);
+    mpz_init(r);
+    mpz_urandomb(a,state,1024);
+    mpz_urandomb(p,state,1024);
+    mpz_urandomb(m,state,1024);
+    for(int i=0;i<n;i++)
+    {
+        mpz_powm(r,a,p,m);
+    }
+    auto total_end=Clock::now();
+    double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
+    std::cout<<"gmp power_mod cost:"<<cost_time<<"s\n";
+}
+
+void CaseTest::gmp_rsa_test(const int n)
+{
+    Clock::time_point total_start=Clock::now();
+    gmp_randstate_t state;
+    gmp_randinit_default(state);
+    gmp_randseed_ui(state,distr(eng));
+    mpz_t p,q,N,phi,D,e,one,a,c,r;
+    mpz_init(p);
+    mpz_init(q);
+    mpz_init(phi);
+    mpz_init(N);
+    mpz_init(D);
+    mpz_init(a);
+    mpz_init(c);
+    mpz_init(r);
+    mpz_init_set_ui(one,1);
+    mpz_init_set_ui(e,65537);
+    mpz_urandomb(a,state,16);
+    mpz_urandomb(p,state,512);
+    mpz_nextprime(p,p);
+    mpz_urandomb(q,state,512);
+    mpz_nextprime(q,q);
+    mpz_mul(N,p,q);
+    mpz_sub(p,p,one);
+    mpz_sub(q,q,one);
+    mpz_mul(phi,p,q);
+    mpz_invert(D,e,phi);
+    double encrypt_total=0.0;
+    double decrypt_total=0.0;
+
+    for(int i=0;i<n;i++)
+    {
+        auto encrypt_start=Clock::now();
+        mpz_powm(c,a,e,N);
+        auto encrypt_end=Clock::now();
+        double encrypt_cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(encrypt_end-encrypt_start).count()/1000000000.0;
+        encrypt_total=encrypt_total+encrypt_cost_time;
+        auto decrypt_start=Clock::now();
+        mpz_powm(r,c,D,N);
+        auto decrypt_end=Clock::now();
+        double decrypt_cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(decrypt_end-decrypt_start).count()/1000000000.0;
+        decrypt_total=decrypt_total+decrypt_cost_time;
+    }
+    auto total_end=Clock::now();
+    double cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(total_end-total_start).count()/1000000000.0;
+    std::cout<<"gmp encrypt_total:"<<encrypt_total<<"s\n";
+    std::cout<<"gmp decrypt_total:"<<decrypt_total<<"s\n";
+    std::cout<<"gmp total_cost:"<<cost_time<<"s\n";
 }
