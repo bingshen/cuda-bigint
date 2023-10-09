@@ -119,12 +119,20 @@ public class Main
 
     public static void main(String[] args)
     {
-        testAdd(42607141,100000000);
-        testSubtract(42607141,100000000);
-        testMultiply(42607141,100000000);
-        testDiv(42607141,100000000);
-        testMod(42607141,100000000);
-        testPowerMod(6833,1000000);
-        testRSA(6833,1000000);
+        int[] test_num1 ={100000,1000000,10000000,100000000,1000000000};
+        int[] test_num2 ={100,1000,10000,100000,1000000};
+        for(int i=0;i<5;i++)
+        {
+            int N=test_num1[i];
+            int n=test_num2[i];
+            System.out.println("N="+N+",n="+n+":");
+            testAdd(N, N);
+            testSubtract(N, N);
+            testMultiply(N, N);
+            testDiv(N, N);
+            testMod(N, N);
+            testPowerMod(n, n);
+            testRSA(n, n);
+        }
     }
 }
