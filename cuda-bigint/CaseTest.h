@@ -96,7 +96,21 @@ public:
     void gmp_mod_test(const int n);
     void gmp_power_mod_test(const int n);
     void gmp_rsa_test(const int n);
+    void empty_run(const int n);
 };
+
+void CaseTest::empty_run(const int n)
+{
+    int batch_times=n/BATCH_SIZE+1;
+    for(int batch_id=0;batch_id<batch_times;++batch_id)
+    {
+        int mini_batch_size=min(n-batch_id*BATCH_SIZE,BATCH_SIZE);
+        Clock::time_point batch_start=Clock::now();
+        auto ret=gpu_add(a,b,c,mini_batch_size);
+        auto batch_end=Clock::now();
+        double batch_cost_time=std::chrono::duration_cast<std::chrono::nanoseconds>(batch_end-batch_start).count()/1000000000.0;
+    }
+}
 
 void CaseTest::single_add(const int n)
 {

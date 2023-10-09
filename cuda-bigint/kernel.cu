@@ -16,6 +16,8 @@ int main()
 	int tl2=sizeof(test_num1)/sizeof(int);
 	CaseTest test;
 	test.random_init(2048,2048,512);
+	//GPU计算第一次会慢一些，先空转一次，把这个误差消掉
+	test.empty_run(1000);
 	for(int i=0;i<tl1;i++)
 	{
 		int N=test_num1[i];
